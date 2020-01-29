@@ -148,7 +148,7 @@ void SetUUIDOverlayIcon( HWND hWnd )
 	int iconWidth = GetSystemMetrics(SM_CXSMICON);
 	int iconHeight = GetSystemMetrics(SM_CYSMICON);
 
-	HICON icon = nullptr;
+	CAutoIcon icon;
 	if (!sicon.empty())
 	{
 		if (sicon.size() >= 4 && !_wcsicmp(sicon.substr(sicon.size() - 4).c_str(), L".ico"))
@@ -163,7 +163,7 @@ void SetUUIDOverlayIcon( HWND hWnd )
 				{
 				auto pBitmap = std::make_unique<Gdiplus::Bitmap>(sicon.c_str(), FALSE);
 				if (pBitmap->GetLastStatus() == Gdiplus::Status::Ok)
-					pBitmap->GetHICON(&icon);
+					pBitmap->GetHICON(icon.GetPointer());
 				}
 				Gdiplus::GdiplusShutdown(gdiplusToken);
 			}
@@ -187,5 +187,4 @@ void SetUUIDOverlayIcon( HWND hWnd )
 		icon = ::CreateIcon(nullptr, iconWidth, iconHeight, 1, 32, AND.get(), reinterpret_cast<BYTE*>(XOR.get()));
 	}
 	pTaskbarInterface->SetOverlayIcon(hWnd, icon, uuid.c_str());
-	DestroyIcon(icon);
 }

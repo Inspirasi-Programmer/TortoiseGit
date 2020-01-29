@@ -133,8 +133,7 @@ int CSysImageList::GetFileIcon(LPCTSTR file, DWORD attributes, UINT extraFlags)
 		&sfi, sizeof sfi,
 		SHGFI_SYSICONINDEX | SHGFI_SMALLICON | SHGFI_USEFILEATTRIBUTES | extraFlags);
 
-	auto hIcon = ImageList_ExtractIcon(nullptr, hSystemImageList, sfi.iIcon);
+	CAutoIcon hIcon = ImageList_ExtractIcon(nullptr, hSystemImageList, sfi.iIcon);
 	auto index = AddIcon(hIcon);
-	DestroyIcon(hIcon);
 	return index;
 }

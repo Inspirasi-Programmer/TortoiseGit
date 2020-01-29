@@ -288,11 +288,11 @@ protected:
     HWND                hwndSelectBtn;
     CNiceTrackbar       m_AlphaSlider;
     HWND                hwndAlphaToggleBtn;
-    HICON               hLeft;
-    HICON               hRight;
-    HICON               hPlay;
-    HICON               hStop;
-    HICON               hAlphaToggle;
+	CAutoIcon hLeft;
+	CAutoIcon hRight;
+	CAutoIcon hPlay;
+	CAutoIcon hStop;
+	CAutoIcon hAlphaToggle;
     bool                bPlaying;
     RECT                m_inforect;
 

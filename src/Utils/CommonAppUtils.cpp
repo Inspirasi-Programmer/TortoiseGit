@@ -219,10 +219,9 @@ bool CCommonAppUtils::SetListCtrlBackgroundImage(HWND hListCtrl, UINT nID, int w
 	ListView_SetTextBkColor(hListCtrl, CLR_NONE);
 	COLORREF bkColor = ListView_GetBkColor(hListCtrl);
 	// create a bitmap from the icon
-	auto hIcon = ::LoadIconEx(AfxGetResourceHandle(), MAKEINTRESOURCE(nID), width, height);
+	CAutoIcon hIcon = ::LoadIconEx(AfxGetResourceHandle(), MAKEINTRESOURCE(nID), width, height);
 	if (!hIcon)
 		return false;
-	SCOPE_EXIT { DestroyIcon(hIcon); };
 
 	RECT rect = {0};
 	rect.right = width;

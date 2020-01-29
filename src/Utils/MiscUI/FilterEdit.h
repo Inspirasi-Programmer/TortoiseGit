@@ -150,9 +150,9 @@ protected:
 	HICON			LoadDpiScaledIcon(UINT resourceId, int cx96dpi, int cy96dpi);
 
 protected:
-	HICON					m_hIconCancelNormal;
-	HICON					m_hIconCancelPressed;
-	HICON					m_hIconInfo;
+	CAutoIcon m_hIconCancelNormal;
+	CAutoIcon m_hIconCancelPressed;
+	CAutoIcon m_hIconInfo;
 	CSize					m_sizeCancelIcon;
 	CSize					m_sizeInfoIcon;
 	CRect					m_rcEditArea;
